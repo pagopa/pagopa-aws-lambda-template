@@ -1,0 +1,1 @@
+# pagopa-aws-lambda-template
