@@ -1,0 +1,24 @@
+{
+    "name": "pagopa-aws-lambda-template",
+    "version": "0.0.1",
+    "description": "A template for AWS Lambda functions in TypeScript language",
+    "repository": "https://github.com/pagopa/pagopa-aws-lambda-template",
+    "author": "https://pagopa.gov.it",
+    "license": "MIT",
+    "scripts": {
+        "prebuild": "rimraf dist",
+        "build": "tsc",
+        "postversion": "git push && git push --tags",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@types/aws-lambda": "^8.10.92",
+        "@types/jest": "^25.2.1",
+        "@types/node": "^18.11.18",
+        "jest": "^25.2.7",
+        "ts-jest": "^29.0.5",
+        "typescript": "^4.9.0"
+    },
+    "dependencies": {
+    }
+}
