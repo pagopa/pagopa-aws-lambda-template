@@ -9,6 +9,7 @@
         "prebuild": "rimraf dist",
         "build": "tsc",
         "postversion": "git push && git push --tags",
+        "rimraf": "./node_modules/rimraf/bin.js",
         "test": "jest"
     },
     "devDependencies": {
