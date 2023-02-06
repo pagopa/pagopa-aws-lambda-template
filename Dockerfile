@@ -5,6 +5,7 @@ COPY tsconfig.json  ./
 
 COPY src src/
 RUN npm install --legacy-peer-deps
+RUN npm install -g rimraf
 RUN npm run build
 
 FROM --platform=linux/amd64 public.ecr.aws/lambda/nodejs:18
