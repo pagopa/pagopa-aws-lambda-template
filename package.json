@@ -1,6 +1,6 @@
 {
     "name": "pagopa-aws-lambda-template",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A template for AWS Lambda functions in TypeScript language",
     "repository": "https://github.com/pagopa/pagopa-aws-lambda-template",
     "author": "https://pagopa.gov.it",
@@ -9,6 +9,7 @@
         "prebuild": "rimraf dist",
         "build": "tsc",
         "postversion": "git push && git push --tags",
+        "rimraf": "./node_modules/rimraf/bin.js",
         "test": "jest"
     },
     "devDependencies": {
