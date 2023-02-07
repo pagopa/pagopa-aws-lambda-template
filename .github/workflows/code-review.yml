@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT_KEY: pagopa_pagopa-aws-lambda-template
+  PROJECT_KEY: pagopa_pagopa-api-config
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -41,6 +41,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=pagopa
+            -Dsonar.projectKey=${{ env.PROJECT_KEY }}
       #
       - name: Archive code coverage results
         uses: actions/upload-artifact@v2
