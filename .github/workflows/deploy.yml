@@ -48,10 +48,10 @@ jobs:
         VERSION=$(grep '"version"' package.json | cut -d '"' -f 4 | head -n 1)
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$VERSION .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$VERSION
-        echo "generated image $ECR_REGISTRY/$ECR_REPOSITORY:$VERSION" >> $GITHUB_OUTPUT
+        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$VERSION" >> $GITHUB_OUTPUT
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$VERSION $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
-        echo "generated image $ECR_REGISTRY/$ECR_REPOSITORY:latest" >> $GITHUB_OUTPUT
+        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:latest" >> $GITHUB_OUTPUT
     
     - name: Trigger Terraform apply in pagopa-aws-infra
       run: |
