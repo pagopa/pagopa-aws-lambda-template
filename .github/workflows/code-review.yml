@@ -54,12 +54,14 @@ jobs:
       #
       - name: Archive test results
         uses: actions/upload-artifact@v2
+        working-directory: coverage
         with:
           name: test-report
           path: test-report.xml
       #
       - name: Archive lint results
         uses: actions/upload-artifact@v2
+        working-directory: coverage
         with:
           name: lint-report
-          path: dist/tslint.json
+          path: lint-report.json
