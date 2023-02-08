@@ -41,6 +41,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=pagopa
+            -Dsonar.projectKey=${{ env.PROJECT_KEY }}
       #
       - name: Archive code coverage results
         uses: actions/upload-artifact@v2
@@ -52,10 +56,10 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: test-report
-          path: test-report.xml
+          path: coverage
       #
       - name: Archive lint results
         uses: actions/upload-artifact@v2
         with:
           name: lint-report
-          path: dist/tslint.json
+          path: coverage
