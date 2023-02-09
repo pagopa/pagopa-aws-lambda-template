@@ -6,7 +6,7 @@ export const handler = async function (
   _context: Context
 ): Promise<APIGatewayProxyResult> {
   return {
-    body: JSON.stringify({ message: "Hi there! I am a Lambda function! V2" }),
+    body: JSON.stringify({ message: "Hi there! I am a Lambda function!" }),
     headers: { "Content-Type": "application/json" },
     statusCode: 200,
   };

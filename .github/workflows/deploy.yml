@@ -8,7 +8,6 @@ on:
 env:
   AWS_REGION: eu-south-1  
   ECR_REPOSITORY: pagopadlambdatemplate
-  VERSION: 
 
   
 permissions:
@@ -31,8 +30,6 @@ jobs:
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
         aws-region: ${{ env.AWS_REGION }}
 
-
-
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
@@ -46,6 +43,7 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         VERSION=$(grep '"version"' package.json | cut -d '"' -f 4 | head -n 1)
+        cd docker
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$VERSION .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$VERSION
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$VERSION" >> $GITHUB_OUTPUT
