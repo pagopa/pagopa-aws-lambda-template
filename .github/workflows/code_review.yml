@@ -26,16 +26,16 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-      #
+      # Install packages from npm
       - name: package install
         run:  npm install
-      #
+      # Execute lint analysis
       - name: lint
         run:  npm run lint
-      #
+      # Execute jest analysis
       - name: test
         run:  npm run test:coverage
-      #
+      # Execute SonarCloud scanning
       - name: SonarCloudScan
         uses: sonarsource/sonarcloud-github-action@master
         env:
@@ -45,19 +45,19 @@ jobs:
           args: >
             -Dsonar.organization=pagopa
             -Dsonar.projectKey=${{ env.PROJECT_KEY }}
-      #
+      # Upload results for code coverage
       - name: Archive code coverage results
         uses: actions/upload-artifact@v2
         with:
           name: code-coverage-report
           path: coverage
-      #
+      # Upload results for jest analysis
       - name: Archive test results
         uses: actions/upload-artifact@v2
         with:
           name: test-report
           path: coverage
-      #
+      # Upload results for lint analysis
       - name: Archive lint results
         uses: actions/upload-artifact@v2
         with:
